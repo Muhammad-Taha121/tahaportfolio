@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Muhammad Taha Sabir — Portfolio
 
-## Getting Started
+Personal portfolio site for Muhammad Taha Sabir, full-stack software engineer. Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4 and Framer Motion.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 15 · App Router · TypeScript (strict)
+- Tailwind CSS v4 (CSS-based theme in `app/globals.css`)
+- Framer Motion (hero entrance, scroll reveals, marquee, mobile nav) — respects `prefers-reduced-motion`
+- Fonts: Inter Tight (headings) and Inter (body) via `next/font/google`
+
+## Project structure
+
+```
+app/                  routes, layout, metadata, sitemap/robots, OG image
+components/           Nav, Hero, TechMarquee, About, Services, Solutions, Process, Projects, ContactFooter, Reveal
+data/                 all site copy — site.ts, skills.ts, services.ts, process.ts, projects.ts, solutions.ts
+lib/styles.ts         shared Tailwind class fragments (container, buttons, section tag)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All copy lives in `data/*.ts` and is fully typed — edit those files to change site content, no JSX hunting required.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy `.env.example` to `.env.local` and set:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Purpose | Default |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Used for `metadataBase`, Open Graph/Twitter URLs, `sitemap.xml` and `robots.txt` | `https://example.com` (placeholder — must be replaced) |
 
-## Deploy on Vercel
+The Gmail compose link, GitHub/LinkedIn URLs, email and phone number are hardcoded in `data/site.ts` since they don't change per environment.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # start dev server
+npm run build    # production build (also type-checks)
+npm run start    # run the production build locally
+npm run lint     # ESLint
+```
+
+## Deploying to Vercel
+
+1. Push this repository to GitHub (or GitLab/Bitbucket).
+2. Import the repo at [vercel.com/new](https://vercel.com/new) — no build configuration is required, Vercel auto-detects Next.js.
+3. In the Vercel project settings, add the `NEXT_PUBLIC_SITE_URL` environment variable set to your production URL (e.g. `https://your-project.vercel.app` or a custom domain), for Production (and Preview, if desired).
+4. Deploy. Re-deploy after adding/changing the env var so `sitemap.xml`, `robots.txt` and Open Graph tags pick it up.
+
+## TODO before launch
+
+- [ ] Set `NEXT_PUBLIC_SITE_URL` to the real deployed domain (`data/site.ts:36`, also used in `.env.example`) — currently a placeholder (`https://example.com`).
+- [ ] Once a real domain is live, consider adding it as `metadataBase` verification / Search Console if desired (not required for the site to function).
+
+No other placeholder content remains — hero, about, services, solutions, process, project and footer copy are final.
