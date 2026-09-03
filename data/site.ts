@@ -21,7 +21,7 @@ export type NavLink = {
 export const site = {
   name: "Muhammad Taha Sabir",
   title: "Full-Stack Engineer",
-  logo: "taha.",
+  logo: "mtahabuilds",
   email: "tahasabirch@gmail.com",
   phone: "+92-300-9476862",
   phoneDisplay: "+92 300 9476862",
