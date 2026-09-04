@@ -1,11 +1,33 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
 import { site } from "@/data/site";
 import { projects, type Project } from "@/data/projects";
 import { container, sectionTag } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
 import { CardReveal } from "@/components/CardReveal";
+import { ProjectModal } from "@/components/ProjectModal";
 import { getTechIcon } from "@/lib/techIcons";
 
-function ProjectIllustration() {
+function ProjectIllustration({ project }: { project: Project }) {
+  if (project.image) {
+    return (
+      <div
+        aria-hidden
+        className="absolute inset-x-6 top-6 h-[150px] overflow-hidden rounded-[10px] border border-white/[.14]"
+      >
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(min-width: 860px) 560px, 90vw"
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       aria-hidden
@@ -27,15 +49,30 @@ function ProjectIllustration() {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: () => void;
+}) {
   const [from, to] = project.gradient;
 
   return (
     <div
-      className="relative flex aspect-[16/10] flex-col justify-end overflow-hidden rounded-card p-6 text-white"
+      role="button"
+      tabIndex={0}
+      onClick={onOpen}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      className="relative flex aspect-[16/10] cursor-pointer flex-col justify-end overflow-hidden rounded-card p-6 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
       style={{ background: `linear-gradient(140deg, ${from}, ${to})` }}
     >
-      <ProjectIllustration />
+      <ProjectIllustration project={project} />
       <div className="mb-2.5 flex flex-wrap gap-1.5">
         {project.stack.map((tech) => {
           const Icon = getTechIcon(tech);
@@ -62,6 +99,8 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   const { projects: copy } = site;
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const activeProject = projects.find((p) => p.slug === activeSlug) ?? null;
 
   return (
     <section id="work" className={`${container} py-16 tab:py-[88px]`}>
@@ -77,11 +116,16 @@ export function Projects() {
 
       <div className="mt-11 grid grid-cols-1 gap-4 tab:grid-cols-2">
         {projects.map((project, i) => (
-          <CardReveal key={project.title} delay={i * 0.08} className="rounded-card">
-            <ProjectCard project={project} />
+          <CardReveal key={project.slug} delay={i * 0.08} className="rounded-card">
+            <ProjectCard
+              project={project}
+              onOpen={() => setActiveSlug(project.slug)}
+            />
           </CardReveal>
         ))}
       </div>
+
+      <ProjectModal project={activeProject} onClose={() => setActiveSlug(null)} />
     </section>
   );
 }

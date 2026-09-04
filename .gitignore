@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# source mockups (screenshotted into public/projects, not shipped)
+/mockups
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
