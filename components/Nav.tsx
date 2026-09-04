@@ -21,8 +21,16 @@ export function Nav() {
 
           <div className="hidden items-center gap-[34px] text-sm text-ink-2 tab:flex">
             {site.nav.links.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-ink">
+              <a
+                key={link.href}
+                href={link.href}
+                className="group relative py-1 hover:text-ink"
+              >
                 {link.label}
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-ink transition-transform duration-300 ease-out group-hover:scale-x-100"
+                />
               </a>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import { site } from "@/data/site";
 import { container, sectionTag } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
+import { CountUp } from "@/components/CountUp";
 
 export function About() {
   const { about } = site;
@@ -42,9 +43,11 @@ export function About() {
                   : "mt-9 border-t border-line pt-7 tab:mt-9 tab:pt-7"
               }
             >
-              <b className="block font-display text-5xl font-medium tracking-[-0.03em]">
-                {stat.value}
-              </b>
+              <CountUp
+                value={stat.value}
+                delay={i * 0.1}
+                className="block font-display text-5xl font-medium tracking-[-0.03em]"
+              />
               <span className="mt-1.5 block max-w-[260px] text-[13px] text-ink-2">
                 {stat.description}
               </span>

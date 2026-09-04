@@ -2,6 +2,8 @@ import { site } from "@/data/site";
 import { projects, type Project } from "@/data/projects";
 import { container, sectionTag } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
+import { CardReveal } from "@/components/CardReveal";
+import { getTechIcon } from "@/lib/techIcons";
 
 function ProjectIllustration() {
   return (
@@ -35,14 +37,18 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <ProjectIllustration />
       <div className="mb-2.5 flex flex-wrap gap-1.5">
-        {project.stack.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-full border border-white/35 px-2.5 py-1 text-[11px]"
-          >
-            {tech}
-          </span>
-        ))}
+        {project.stack.map((tech) => {
+          const Icon = getTechIcon(tech);
+          return (
+            <span
+              key={tech}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/35 px-2.5 py-1 text-[11px]"
+            >
+              {Icon && <Icon aria-hidden className="h-3 w-3" />}
+              {tech}
+            </span>
+          );
+        })}
       </div>
       <h3 className="font-display text-xl font-medium tracking-[-0.02em]">
         {project.title}
@@ -71,9 +77,9 @@ export function Projects() {
 
       <div className="mt-11 grid grid-cols-1 gap-4 tab:grid-cols-2">
         {projects.map((project, i) => (
-          <Reveal key={project.title} delay={i * 0.08}>
+          <CardReveal key={project.title} delay={i * 0.08} className="rounded-card">
             <ProjectCard project={project} />
-          </Reveal>
+          </CardReveal>
         ))}
       </div>
     </section>

@@ -2,6 +2,7 @@ import { gmailLink } from "@/data/site";
 import { solutions } from "@/data/solutions";
 import { container, sectionTag } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
+import { CardReveal } from "@/components/CardReveal";
 
 export function Solutions() {
   return (
@@ -18,34 +19,18 @@ export function Solutions() {
 
       <div className="mt-11 grid grid-cols-1 gap-4 tab:grid-cols-2 lg:grid-cols-3">
         {solutions.items.map((solution, i) => (
-          <Reveal key={solution.title} delay={i * 0.05}>
-            <div
-              className={`flex h-full flex-col justify-between rounded-card border p-[26px] ${
-                solution.variant === "dark"
-                  ? "border-dark bg-dark text-white"
-                  : "border-line"
-              }`}
-            >
+          <CardReveal key={solution.title} delay={i * 0.05} className="h-full rounded-card">
+            <div className="flex h-full flex-col justify-between rounded-card border border-line p-[26px]">
               <div>
                 <h3 className="mb-2.5 font-display text-lg font-medium tracking-[-0.02em]">
                   {solution.title}
                 </h3>
-                <p
-                  className={`text-[13px] ${
-                    solution.variant === "dark" ? "text-[#bdbdbd]" : "text-ink-2"
-                  }`}
-                >
-                  {solution.description}
-                </p>
+                <p className="text-[13px] text-ink-2">{solution.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {solution.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`rounded-full border px-3 py-1 text-[11px] font-medium ${
-                        solution.variant === "dark"
-                          ? "border-[#3a3a3a] text-[#d0d0d0]"
-                          : "border-line bg-panel text-ink-2"
-                      }`}
+                      className="rounded-full border border-line bg-panel px-3 py-1 text-[11px] font-medium text-ink-2"
                     >
                       {tag}
                     </span>
@@ -62,7 +47,7 @@ export function Solutions() {
                 <span aria-hidden>→</span>
               </a>
             </div>
-          </Reveal>
+          </CardReveal>
         ))}
       </div>
 

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import { site } from "@/data/site";
 import { container } from "@/lib/styles";
 
@@ -55,15 +57,42 @@ export function Hero() {
             {site.hero.bio}
           </p>
           <div className="flex flex-wrap gap-2.5">
-            <a
+            <motion.a
               href={site.githubUrl}
               target="_blank"
               rel="noopener"
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.04 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
+              transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="inline-flex items-center gap-2.5 rounded-full border border-ink bg-ink px-[22px] py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#333] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
             >
               {site.hero.githubButtonLabel}
               <span aria-hidden>↗</span>
-            </a>
+            </motion.a>
+            <motion.a
+              href={site.linkedinUrl}
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
+              transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-full border border-ink text-ink transition-colors duration-200 hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
+            >
+              <FaLinkedin aria-hidden size={18} />
+            </motion.a>
+            <motion.a
+              href={site.gmailComposeUrl}
+              target="_blank"
+              rel="noopener"
+              aria-label="Email on Gmail"
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
+              transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-full border border-ink text-ink transition-colors duration-200 hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
+            >
+              <SiGmail aria-hidden size={16} />
+            </motion.a>
           </div>
         </motion.div>
       </header>

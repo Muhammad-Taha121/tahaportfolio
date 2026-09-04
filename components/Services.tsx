@@ -2,6 +2,7 @@ import { site } from "@/data/site";
 import { services } from "@/data/services";
 import { container, sectionTag, btnSolid } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
+import { CardReveal } from "@/components/CardReveal";
 
 export function Services() {
   const { services: copy } = site;
@@ -25,36 +26,18 @@ export function Services() {
           </a>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="grid grid-cols-1 gap-4 tab:grid-cols-2">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className={`flex min-h-[190px] flex-col justify-between rounded-card border p-[26px] ${
-                  service.variant === "dark"
-                    ? "border-dark bg-dark text-white"
-                    : "border-line"
-                }`}
-              >
-                <div>
-                  <h3 className="mb-2.5 font-display text-lg font-medium tracking-[-0.02em]">
-                    {service.title}
-                  </h3>
-                  <p
-                    className={`text-[13px] ${
-                      service.variant === "dark" ? "text-[#bdbdbd]" : "text-ink-2"
-                    }`}
-                  >
-                    {service.description}
-                  </p>
-                </div>
-                <span className="mt-5 text-xl" aria-hidden>
-                  {service.variant === "dark" ? "↗" : "→"}
-                </span>
+        <div className="grid grid-cols-1 gap-4 tab:grid-cols-2">
+          {services.map((service, i) => (
+            <CardReveal key={service.title} delay={0.1 + i * 0.06} className="rounded-card">
+              <div className="flex min-h-[190px] flex-col rounded-card border border-line p-[26px]">
+                <h3 className="mb-2.5 font-display text-lg font-medium tracking-[-0.02em]">
+                  {service.title}
+                </h3>
+                <p className="text-[13px] text-ink-2">{service.description}</p>
               </div>
-            ))}
-          </div>
-        </Reveal>
+            </CardReveal>
+          ))}
+        </div>
       </div>
     </section>
   );
