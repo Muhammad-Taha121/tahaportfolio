@@ -40,7 +40,7 @@ export function Solutions() {
               <a
                 href={gmailLink(`Enquiry: ${solution.title}`)}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-medium hover:underline"
               >
                 {solutions.ctaLabel}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { site } from "@/data/site";
 import { container } from "@/lib/styles";
@@ -60,7 +60,7 @@ export function Hero() {
             <motion.a
               href={site.githubUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               whileHover={shouldReduceMotion ? undefined : { scale: 1.04 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
               transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -72,7 +72,7 @@ export function Hero() {
             <motion.a
               href={site.linkedinUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
@@ -84,7 +84,7 @@ export function Hero() {
             <motion.a
               href={site.gmailComposeUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Email on Gmail"
               whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
@@ -92,6 +92,18 @@ export function Hero() {
               className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-full border border-ink text-ink transition-colors duration-200 hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
             >
               <SiGmail aria-hidden size={16} />
+            </motion.a>
+            <motion.a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
+              transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-full border border-ink text-ink transition-colors duration-200 hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
+            >
+              <FaWhatsapp aria-hidden size={18} />
             </motion.a>
           </div>
         </motion.div>

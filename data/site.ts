@@ -22,15 +22,16 @@ export const site = {
   name: "Muhammad Taha Sabir",
   title: "Full-Stack Engineer",
   logo: "mtahabuilds",
-  email: "tahasabirch@gmail.com",
-  phone: "+92-300-9476862",
-  phoneDisplay: "+92 300 9476862",
+  email: "mtahabuilds@gmail.com",
+  phone: "+923320498333",
+  phoneDisplay: "+92 332 0498333",
+  whatsappUrl: "https://wa.me/923320498333",
   location: "Lahore, Pakistan",
   githubUrl: "https://github.com/Muhammad-Taha121",
   linkedinUrl: "https://linkedin.com/in/muhammad-taha-sabir",
   gmailComposeUrl:
-    "https://mail.google.com/mail/?view=cm&fs=1&to=tahasabirch@gmail.com&su=Project%20enquiry%20from%20your%20portfolio",
-  mailtoUrl: "mailto:tahasabirch@gmail.com",
+    "https://mail.google.com/mail/?view=cm&fs=1&to=mtahabuilds@gmail.com&su=Project%20enquiry%20from%20your%20portfolio",
+  mailtoUrl: "mailto:mtahabuilds@gmail.com",
   // TODO: replace with the real production URL (custom domain or *.vercel.app) once deployed.
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
 

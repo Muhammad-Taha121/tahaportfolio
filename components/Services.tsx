@@ -21,7 +21,7 @@ export function Services() {
           <p className="my-[22px] max-w-[340px] text-sm text-ink-2 tab:mb-7">
             {copy.lede}
           </p>
-          <a href={site.gmailComposeUrl} target="_blank" rel="noopener" className={btnSolid}>
+          <a href={site.gmailComposeUrl} target="_blank" rel="noopener noreferrer" className={btnSolid}>
             {copy.ctaLabel}
           </a>
         </Reveal>

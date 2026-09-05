@@ -1,3 +1,4 @@
+import { FaWhatsapp } from "react-icons/fa";
 import { site } from "@/data/site";
 import { container } from "@/lib/styles";
 import { Reveal } from "@/components/Reveal";
@@ -21,7 +22,7 @@ export function ContactFooter() {
             <a
               href={site.gmailComposeUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 rounded-full border border-white px-[22px] py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-white hover:text-ink"
             >
               {footer.ctaButtonLabel}
@@ -51,7 +52,7 @@ export function ContactFooter() {
               <a
                 href={site.gmailComposeUrl}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="hover:text-white"
               >
                 {site.email}
@@ -68,7 +69,13 @@ export function ContactFooter() {
               <strong className="mb-2 block font-medium text-white">
                 Phone
               </strong>
-              <a href={`tel:${site.phone}`} className="hover:text-white">
+              <a
+                href={site.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-white"
+              >
+                <FaWhatsapp aria-hidden size={15} />
                 {site.phoneDisplay}
               </a>
             </div>
@@ -80,7 +87,7 @@ export function ContactFooter() {
             <a
               href={site.githubUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="hover:text-white"
             >
               GitHub ↗
@@ -88,7 +95,7 @@ export function ContactFooter() {
             <a
               href={site.linkedinUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="ml-[22px] hover:text-white"
             >
               LinkedIn ↗

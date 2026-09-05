@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/data/site";
 import { container } from "@/lib/styles";
@@ -12,11 +13,15 @@ export function Nav() {
     <div className="sticky top-0 z-50 border-b border-transparent bg-bg/90 backdrop-blur-sm">
       <div className={container}>
         <nav className="flex items-center justify-between py-[26px]">
-          <a
-            href="#"
-            className="font-display text-xl font-semibold tracking-[-0.02em]"
-          >
-            {site.logo}
+          <a href="#" aria-label={site.logo} className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt={site.logo}
+              width={831}
+              height={258}
+              priority
+              className="h-8 w-auto tab:h-9"
+            />
           </a>
 
           <div className="hidden items-center gap-[34px] text-sm text-ink-2 tab:flex">
